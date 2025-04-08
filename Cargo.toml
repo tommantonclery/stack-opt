@@ -1,6 +1,6 @@
 [package]
 name = "stack-opt"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Thomas Clery tommantonclery@gmail.com"]
 description = "A blazing-fast CLI to audit and optimize your JS/TS dependency stack"
