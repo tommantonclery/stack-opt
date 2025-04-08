@@ -7,6 +7,8 @@ mod utils;
 
 use crate::report::Report;
 use std::collections::HashMap;
+use indicatif::{ProgressBar, ProgressStyle};
+use crate::analyzer::analyze_package;
 
 #[tokio::main]
 async fn main() {
@@ -50,21 +52,29 @@ async fn main() {
 }
 
 async fn analyze_set(
-    deps: HashMap<String, String>,
+    deps: std::collections::HashMap<String, String>,
     label: &str,
     report: &mut Report,
 ) {
-    for (pkg, _) in deps {
-        println!("\n📦 Fetching metadata for {} [{}]...", pkg, label);
+    let total = deps.len();
+    let bar = ProgressBar::new(total as u64);
+    bar.set_style(
+        ProgressStyle::with_template(
+            "🔍 Analyzing [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} packages",
+        )
+        .unwrap()
+        .progress_chars("=>-"),
+    );
 
+    bar.println(format!("📦 Starting analysis for {}...", label));
+
+    for (pkg, _) in deps {
         match metadata::fetch_metadata(&pkg).await {
             Ok(meta) => {
-                let insights = analyzer::analyze_package(&meta);
+                let insights = analyze_package(&meta);
 
                 if insights.is_empty() {
-                    // Track clean package
                     report.packages_scanned.insert(pkg.clone());
-                    println!("✅ No issues found for {}", pkg);
                 } else {
                     for insight in insights {
                         report.add(insight);
@@ -72,8 +82,12 @@ async fn analyze_set(
                 }
             }
             Err(err) => {
-                eprintln!("❌ Error for {}: {}", pkg, err);
+                bar.println(format!("❌ Failed to fetch {}: {}", pkg, err));
             }
         }
+
+        bar.inc(1);
     }
+
+    bar.finish_with_message(format!("✅ Finished analyzing {}", label));
 }
