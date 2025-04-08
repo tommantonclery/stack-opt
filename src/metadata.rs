@@ -2,6 +2,7 @@ use chrono::NaiveDate;
 use serde::Deserialize;
 use std::collections::HashMap;
 
+#[allow(dead_code)]
 #[derive(Debug)]
 pub struct PackageMeta {
     pub name: String,

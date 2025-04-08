@@ -5,7 +5,9 @@ use std::path::Path;
 #[derive(Debug, Deserialize)]
 pub struct PackageJson {
     pub dependencies: Option<HashMap<String, String>>,
-    pub devDependencies: Option<HashMap<String, String>>,
+
+    #[serde(rename = "devDependencies")]
+    pub dev_dependencies: Option<HashMap<String, String>>,
 }
 
 pub fn load_package_json(path: &str) -> Result<PackageJson, String> {
