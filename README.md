@@ -32,7 +32,7 @@ Useful for keeping your stack lean, modern, and production-ready.
 Install via Cargo:
 
 ```bash
-cargo install --git https://github.com/tomc2154/stack-opt
+cargo install stack-opt
 ```
 
 Or clone and build locally:
