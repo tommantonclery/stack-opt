@@ -1,5 +1,7 @@
 # 📦 stack-opt
 
+[![Crates.io](https://img.shields.io/crates/v/stack-opt.svg)](https://crates.io/crates/stack-opt)
+
 > Audit and optimize your JavaScript/TypeScript dependency stack — fast, local, and smart.
 
 `stack-opt` is a blazing-fast CLI tool written in Rust that scans your `package.json` and flags:
@@ -30,7 +32,7 @@ Useful for keeping your stack lean, modern, and production-ready.
 Install via Cargo:
 
 ```bash
-cargo install --git https://github.com/tomc2154/stack-opt
+cargo install stack-opt
 ```
 
 Or clone and build locally:
