@@ -30,13 +30,13 @@ Useful for keeping your stack lean, modern, and production-ready.
 Install via Cargo:
 
 ```bash
-cargo install --git https://github.com/yourname/stack-opt
+cargo install --git https://github.com/tomc2154/stack-opt
 ```
 
 Or clone and build locally:
 
 ```bash
-git clone https://github.com/yourname/stack-opt.git
+git clone https://github.com/tomc2154/stack-opt.git
 cd stack-opt
 cargo install --path .
 ```
@@ -90,7 +90,7 @@ stack-opt --fail-on crit
 ## 🤝 Contributing
 
 Pull requests, issues, and suggestions are always welcome!  
-If you’ve got ideas, open a [discussion](https://github.com/yourname/stack-opt/discussions) or [issue](https://github.com/yourname/stack-opt/issues).
+If you’ve got ideas, open a [discussion](https://github.com/tomc2154/stack-opt/discussions) or [issue](https://github.com/tomc2154/stack-opt/issues).
 
 ---
 
