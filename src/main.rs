@@ -23,7 +23,7 @@ async fn main() {
             }
 
             if !args.no_dev {
-                if let Some(dev_deps) = package_json.devDependencies {
+                if let Some(dev_deps) = package_json.dev_dependencies {
                     println!("\n🔧 Analyzing devDependencies...");
                     analyze_set(dev_deps, "devDependencies", &mut report).await;
                 }
