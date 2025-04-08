@@ -2,7 +2,7 @@
 name = "stack-opt"
 version = "0.1.0"
 edition = "2021"
-authors = ["Tom C <your.email@example.com>"]
+authors = ["Thomas Clery tommantonclery@gmail.com"]
 description = "A blazing-fast CLI to audit and optimize your JS/TS dependency stack"
 license = "MIT"
 repository = "https://github.com/tomc2154/slack-opt"
