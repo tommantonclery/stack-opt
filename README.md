@@ -1,41 +1,49 @@
 # 📦 stack-opt
 
-[![Crates.io](https://img.shields.io/crates/v/stack-opt.svg)](https://crates.io/crates/stack-opt)
+A CLI tool I wrote in Rust to help audit JavaScript/TypeScript dependencies.
+It scans your `package.json` and highlights packages that are:
 
-> Audit and optimize your JavaScript/TypeScript dependency stack — fast, local, and smart.
+* 🐘 unusually **large**
+* 🕒 **stale** (haven’t been updated in a while)
+* ⚠️ **deprecated**
+* 👤 **low-maintenance** (only one maintainer, low activity)
 
-`stack-opt` is a blazing-fast CLI tool written in Rust that scans your `package.json` and flags:
-
-- 🐘 **Large** packages that bloat your bundle
-- 🕒 **Stale** packages that haven’t been updated in ages
-- ⚠️ **Deprecated** dependencies that you should avoid
-- 👤 **Low-maintenance** libraries with a single maintainer
-
-Useful for keeping your stack lean, modern, and production-ready.
+The goal: make it easier to keep projects lean and avoid risky dependencies.
 
 ---
 
-## 🚀 Features
+## Why I Built This
 
-- ⚡ High-performance Rust-powered analysis
-- 📦 Analyzes both `dependencies` and `devDependencies`
-- 🌐 Pulls live data from the NPM registry
-- 🧠 Applies smart heuristics
-- 🌈 Colorful, easy-to-read output
-- 📄 JSON output for automation/CI use
-- 🔐 Zero tracking, 100% local (no uploads)
+I wanted to learn Rust by building something practical. Dependency sprawl is a pain point I’ve hit in real projects, so I thought: why not try making a tool that helps me spot problems early?
+
+This project gave me hands-on experience with:
+
+* Writing CLIs in Rust
+* Working with async APIs (NPM registry)
+* Balancing speed with usability (human-readable vs JSON output)
 
 ---
 
-## 📦 Installation
+## Features
 
-Install via Cargo:
+* Fast, local analysis powered by Rust
+* Checks both `dependencies` and `devDependencies`
+* Fetches live metadata from the NPM registry
+* Colorful, easy-to-read CLI output
+* JSON output for CI pipelines or automation
+* Zero tracking — everything runs locally
+
+---
+
+## Installation
+
+From crates.io:
 
 ```bash
 cargo install stack-opt
 ```
 
-Or clone and build locally:
+Or build from source:
 
 ```bash
 git clone https://github.com/tomc2154/stack-opt.git
@@ -45,22 +53,24 @@ cargo install --path .
 
 ---
 
-## 🛠 Usage
+## Usage
+
+Basic scan:
 
 ```bash
 stack-opt --path ./your-project
 ```
 
-### 🔧 CLI Options:
+### CLI Options
 
-| Flag             | Description                                  |
-|------------------|----------------------------------------------|
-| `--path`         | Path to the project directory (default: `.`) |
-| `--no-dev`       | Skip `devDependencies`                       |
-| `--json`         | Output results in JSON format                |
-| `--fail-on`      | Exit with code `1` on warnings or criticals  |
+| Flag        | Description                                  |
+| ----------- | -------------------------------------------- |
+| `--path`    | Path to the project directory (default: `.`) |
+| `--no-dev`  | Skip `devDependencies`                       |
+| `--json`    | Output results in JSON format                |
+| `--fail-on` | Exit with code `1` on warnings or criticals  |
 
-### Example:
+Examples:
 
 ```bash
 stack-opt --no-dev
@@ -70,7 +80,7 @@ stack-opt --fail-on crit
 
 ---
 
-## 📊 Sample Output
+## Example Output
 
 ```
 📦 Fetching metadata for moment [dependencies]...
@@ -89,14 +99,15 @@ stack-opt --fail-on crit
 
 ---
 
-## 🤝 Contributing
+## What I Learned
 
-Pull requests, issues, and suggestions are always welcome!  
-If you’ve got ideas, open a [discussion](https://github.com/tomc2154/stack-opt/discussions) or [issue](https://github.com/tomc2154/stack-opt/issues).
+* Structuring a Rust CLI project with Cargo
+* Designing user-friendly command-line interfaces
+* Interacting with external APIs efficiently in Rust
+* Balancing developer UX with raw performance
 
 ---
 
-## 📄 License
+## License
 
-MIT License.  
-See [`LICENSE`](./LICENSE) for details.
+MIT © 2025 tommantonclery
